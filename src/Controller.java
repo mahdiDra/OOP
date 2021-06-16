@@ -8,6 +8,7 @@ public class Controller {
     ArrayList<Wild> wilds;
     ArrayList<Factory> factories;
     Ground ground;
+    Truck truck;
     int egg,feather,milk,cloth,iceCream,flour,dress,bread,pocketMilk,well;
     int money;
 
@@ -16,6 +17,7 @@ public class Controller {
         this.domestics = new ArrayList<>();
         this.ground = new Ground();
         this.factories = new ArrayList<>();
+        this.truck = new Truck();
     }
 
     public String buyDomestic(String name){
