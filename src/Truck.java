@@ -2,6 +2,8 @@ import java.util.ArrayList;
 
 public class Truck {
     private ArrayList<Wild> wilds;
+    private ArrayList<Domestic> domestics;
+    private ArrayList<Helperanimals> helperanimals;
     private int egg;
     private int milk;
     private int feather;
@@ -12,9 +14,13 @@ public class Truck {
     private int iceCream;
     private int bread;
     private int space;
+    private int money;
+
 
     public Truck() {
         this.wilds = new ArrayList<>();
+        this.domestics = new ArrayList<>();
+        this.helperanimals = new ArrayList<>();
         this.space = 15;
     }
 
@@ -141,7 +147,13 @@ public class Truck {
         }
     }
 
-    public int getSpace() {
+    public int getSpace()
+    {
         return space;
+    }
+    public int getaPrice()
+    {
+        space=15;
+        return money;
     }
 }

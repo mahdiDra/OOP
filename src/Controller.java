@@ -6,27 +6,33 @@ public class Controller {
 
     ArrayList<Domestic> domestics;
     ArrayList<Wild> wilds;
+    ArrayList<Helperanimals> helperanimals ;
     ArrayList<Factory> factories;
     Ground ground;
     Truck truck;
     int egg,feather,milk,cloth,iceCream,flour,dress,bread,pocketMilk,well;
-    int money;
+    int money=0;
+    int wild;
 
-    public Controller() {
+    public Controller()
+    {
         this.wilds = new ArrayList<>();
         this.domestics = new ArrayList<>();
+        this.helperanimals = new ArrayList<>();
         this.ground = new Ground();
         this.factories = new ArrayList<>();
         this.truck = new Truck();
     }
 
-    public String buyDomestic(String name){
+    public String buyDomestic(String name)
+    {
         //TODO
         domestics.add(new Domestic(name.toLowerCase(Locale.ROOT)));
         money -= domestics.get(domestics.size()-1).getPrice();
         return null;
     }
-    public String pickup(String x , String y){
+    public String pickup(String x , String y)
+    {
         return null;
     }
     public String well(){
@@ -87,19 +93,43 @@ public class Controller {
         }
         return "wrong factory name";
     }
-    public String cage(String x , String y){
+    public String cage(String x , String y)
+    {
+        for (Wild wild : wilds)
+        {
+            int life=wild.getNeededTimeForBusting();
+            if (life!=0)
+            {
+                if (x.equalsIgnoreCase(String.valueOf(wild.getX())))
+                {
+                if (y.equalsIgnoreCase(String.valueOf(wild.getY())))
+                {
+                    life=wild.getNeededTimeForBusting();
+                }
+                }
+            }
+            else
+            {
+                int p=wild.Kill();
+            }
+        }
+        return "wrong factory name";
+    }
+    public String turn(String n)
+    {
         return null;
     }
-    public String turn(String n){
+    public String truckLoad(String name)
+    {
+        
         return null;
     }
-    public String truckLoad(String name){
+    public String truckUnload(String name)
+    {
         return null;
     }
-    public String truckUnload(String name){
-        return null;
-    }
-    public String truckGo(){
-        return null;
+    public Integer truckGo()
+    {
+        return truck.getaPrice();
     }
 }

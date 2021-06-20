@@ -54,11 +54,13 @@ public class Factory {
     }
 
 
-    public String getName() {
+    public String getName()
+    {
         return name;
     }
 
-    public Keys getNeeds() {
+    public Keys getNeeds()
+    {
         return needs;
     }
 
