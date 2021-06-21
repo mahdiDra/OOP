@@ -5,6 +5,7 @@ public class Factory {
     Keys needs;
     int buildPrice;
     int timeForProducing;
+    int level=0;
 
     public Factory(Keys needs) {
         switch (needs) {
@@ -63,10 +64,22 @@ public class Factory {
     {
         return needs;
     }
+    public void getTimeForProducing()
+    {
+        if ((timeForProducing%2)!=0)
+        {
+            timeForProducing++;
+        }
+        timeForProducing=timeForProducing/2;
+    }
 
 
     public int start(){
         //TODO
         return 1;
+    }
+    public int getLevel()
+    {
+        return level;
     }
 }

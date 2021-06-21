@@ -55,37 +55,91 @@ public class Controller {
                 switch (factory.getNeeds()){
                     case EGG:
                         if(egg != 0){
-                            egg--;
+                            if (factory.getLevel()==0) {
+                                egg--;
+                            }
+                            if (factory.getLevel()==1) {
+                                egg=egg-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                egg--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough eggs";
                     case FEATHER:
                         if(feather != 0){
-                            feather--;
+                            if (factory.getLevel()==0) {
+                                feather--;
+                            }
+                            if (factory.getLevel()==1) {
+                                feather=feather-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                feather--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough feather";
                     case MILK:
                         if(milk != 0){
-                            milk--;
+                            if (factory.getLevel()==0) {
+                                milk--;
+                            }
+                            if (factory.getLevel()==1) {
+                                milk=milk-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                milk--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough milk";
                     case POCKET_MILK:
                         if(pocketMilk != 0){
-                            pocketMilk--;
+                            if (factory.getLevel()==0) {
+                                pocketMilk--;
+                            }
+                            if (factory.getLevel()==1) {
+                                pocketMilk=pocketMilk-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                pocketMilk--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough pocket milk";
                     case CLOTH:
                         if(cloth != 0){
-                            cloth--;
+                            if (factory.getLevel()==0) {
+                                cloth--;
+                            }
+                            if (factory.getLevel()==1) {
+                                cloth=cloth-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                cloth--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough cloth";
                     case FLOUR:
                         if(flour != 0){
-                            flour--;
+                            if (factory.getLevel()==0) {
+                                flour--;
+                            }
+                            if (factory.getLevel()==1) {
+                                flour=flour-2;
+                            }
+                            if (factory.getLevel()==2) {
+                                flour--;
+                                factory.getTimeForProducing();
+                            }
                             factory.start();
                             return "factory just started working";
                         }else return "not enough flour";
