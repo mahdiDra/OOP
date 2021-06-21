@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Wild {
     private String name;
-    private int sellprice;
+    private int sellPrice;
     private int speed;
     private int neededTimeForBusting;
     private int remainingAge;
@@ -14,18 +14,18 @@ public class Wild {
         this.remainingAge = 100;
         switch (name) {
             case "lion" -> {
-                this.sellprice = 300;
+                this.sellPrice = 300;
                 this.speed = 1;
                 this.neededTimeForBusting = 3;
             }
             case "bear" -> {
                 this.speed = 1;
-                this.sellprice = 400;
+                this.sellPrice = 400;
                 this.neededTimeForBusting = 4;
             }
             case "tiger" -> {
                 this.speed = 2;
-                this.sellprice = 500;
+                this.sellPrice = 500;
                 this.neededTimeForBusting = 4;
             }
         }
@@ -36,7 +36,7 @@ public class Wild {
 
     public int getPrice()
     {
-        return sellprice;
+        return sellPrice;
     }
     public int getX() {
         return x;

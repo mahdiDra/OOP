@@ -8,4 +8,7 @@ public enum Keys {
     DRESS,
     ICE_CREAM,
     BREAD,
+    LION,
+    TIGER,
+    BEAR
 }

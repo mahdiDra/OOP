@@ -1,12 +1,15 @@
 public class Factory {
 
-    String name;
-    String production;
-    Keys needs;
-    int buildPrice;
-    int timeForProducing;
+    private String name;
+    private String production;
+    private Keys needs;
+    private int buildPrice;
+    private int timeForProducing;
+    private boolean start;
+
 
     public Factory(Keys needs) {
+        this.start = false;
         switch (needs) {
             case EGG -> {
                 this.needs = Keys.EGG;
@@ -65,8 +68,31 @@ public class Factory {
     }
 
 
-    public int start(){
-        //TODO
-        return 1;
+    public Production getProduct(){
+        return new Production(this.production);
+    }
+
+    public boolean isStart() {
+        return start;
+    }
+
+    public void setStart(boolean start) {
+        this.start = start;
+    }
+
+    public int getTimeForProducing() {
+        return timeForProducing;
+    }
+
+    public void setTimeForProducing(int timeForProducing) {
+        this.timeForProducing = timeForProducing;
+    }
+    public void setTimeForProducing() {
+        switch (this.name) {
+            case "mill" -> this.timeForProducing = 4;
+            case "milk packing", "dressmaking" -> this.timeForProducing = 6;
+            case "cloth packing", "bakery" -> this.timeForProducing = 5;
+            case "ice cream shop" -> this.timeForProducing = 7;
+        }
     }
 }

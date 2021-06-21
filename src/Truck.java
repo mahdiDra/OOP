@@ -3,7 +3,7 @@ import java.util.ArrayList;
 public class Truck {
     private ArrayList<Wild> wilds;
     private ArrayList<Domestic> domestics;
-    private ArrayList<Helperanimals> helperanimals;
+    private ArrayList<HelperAnimal> helperAnimals;
     private int egg;
     private int milk;
     private int feather;
@@ -15,99 +15,102 @@ public class Truck {
     private int bread;
     private int space;
     private int money;
+    private boolean go;
+    private int remainingTimeBack;
 
 
     public Truck() {
         this.wilds = new ArrayList<>();
         this.domestics = new ArrayList<>();
-        this.helperanimals = new ArrayList<>();
+        this.helperAnimals = new ArrayList<>();
         this.space = 15;
+        this.remainingTimeBack = 10;
     }
 
-    public void truckLoad(String str,int n){
+    public void truckLoad(Production pro){
         for (price value : price.values()) {
-            if(str.equals(value.name())){
+            if(pro.getName().equals(value.name())){
                 switch (value) {
                     case EGG -> {
-                        egg += n;
-                        space -= n * spaces.EGG.space;
+                        egg ++;
+                        space -= spaces.EGG.space;
                     }
                     case FEATHER -> {
-                        feather += n;
-                        space -= n * spaces.FEATHER.space;
+                        feather ++;
+                        space -= spaces.FEATHER.space;
                     }
                     case MILK -> {
-                        milk += n;
-                        space -= n * spaces.MILK.space;
+                        milk ++;
+                        space -= spaces.MILK.space;
                     }
                     case FLOUR -> {
-                        flour += n;
-                        space -= n * spaces.FLOUR.space;
+                        flour ++;
+                        space -= spaces.FLOUR.space;
                     }
                     case CLOTH -> {
-                        cloth += n;
-                        space -= n * spaces.CLOTH.space;
+                        cloth ++;
+                        space -= spaces.CLOTH.space;
                     }
                     case POCKET_MILK -> {
-                        pocketMilk += n;
-                        space -= n * spaces.POCKET_MILK.space;
+                        pocketMilk ++;
+                        space -= spaces.POCKET_MILK.space;
                     }
                     case DRESS -> {
-                        dress += n;
-                        space -= n * spaces.DRESS.space;
+                        dress ++;
+                        space -= spaces.DRESS.space;
                     }
                     case ICE_CREAM -> {
-                        iceCream += n;
-                        space -= n * spaces.ICE_CREAM.space;
+                        iceCream ++;
+                        space -= spaces.ICE_CREAM.space;
                     }
                     case BREAD -> {
-                        bread += n;
-                        space -= n * spaces.BREAD.space;
+                        bread ++;
+                        space -= spaces.BREAD.space;
                     }
                 }
             }
         }
     }
 
-    public void truckUnload(String str,int n){
+    public void truckUnload(Production pro){
         for (price value : price.values()) {
-            if(str.equals(value.name())){
+            if(pro.getName().equals(value.name())){
                 switch (value) {
                     case EGG -> {
-                        egg -= n;
-                        space += n * spaces.EGG.space;
+                        egg --;
+                        space += spaces.EGG.space;
                     }
                     case FEATHER -> {
-                        feather -= n;
-                        space += n * spaces.FEATHER.space;
+                        feather --;
+                        space += spaces.FEATHER.space;
                     }
                     case MILK -> {
-                        milk -= n;
-                        space += n * spaces.MILK.space;
+                        milk --;
+                        space += spaces.MILK.space;
                     }
                     case FLOUR -> {
-                        flour -= n;
-                        space += n * spaces.FLOUR.space;
+                        flour --;
+                        space += spaces.FLOUR.space;
                     }
                     case CLOTH -> {
-                        cloth -= n;
-                        space += n * spaces.CLOTH.space;
+                        cloth --;
+                        space += spaces.CLOTH.space;
                     }
                     case POCKET_MILK -> {
-                        pocketMilk -= n;
-                        space += n * spaces.POCKET_MILK.space;
+                        pocketMilk --;
+                        space += spaces.POCKET_MILK.space;
                     }
                     case DRESS -> {
-                        dress -= n;
-                        space += n * spaces.DRESS.space;
+                        dress --;
+                        space += spaces.DRESS.space;
                     }
                     case ICE_CREAM -> {
-                        iceCream -= n;
-                        space += n * spaces.ICE_CREAM.space;
+                        iceCream --;
+                        space += spaces.ICE_CREAM.space;
                     }
                     case BREAD -> {
-                        bread -= n;
-                        space += n * spaces.BREAD.space;
+                        bread --;
+                        space += spaces.BREAD.space;
                     }
                 }
             }
@@ -147,13 +150,50 @@ public class Truck {
         }
     }
 
-    public int getSpace()
-    {
-        return space;
+    public boolean isGo() {
+        return go;
     }
-    public int getaPrice()
-    {
-        space=15;
+
+    public void setGo(boolean go) {
+        this.go = go;
+    }
+
+    public int getRemainingTimeBack() {
+        return remainingTimeBack;
+    }
+
+    public void setRemainingTimeBack(int remainingTimeBack) {
+        this.remainingTimeBack = remainingTimeBack;
+    }
+
+    public void setRemainingTimeBack() {
+        this.remainingTimeBack = 10;
+    }
+
+    public int getMoney(){
+        money+=egg*price.EGG.price;
+        egg = 0;
+        money+=milk*price.MILK.price;
+        milk = 0;
+        money+=feather*price.FEATHER.price;
+        feather = 0;
+        money+=cloth*price.CLOTH.price;
+        cloth = 0;
+        money+=flour*price.FLOUR.price;
+        flour = 0;
+        money+=pocketMilk*price.POCKET_MILK.price;
+        pocketMilk = 0;
+        money+=dress*price.DRESS.price;
+        dress = 0;
+        money+=iceCream*price.ICE_CREAM.price;
+        iceCream = 0;
+        money+=bread*price.BREAD.price;
+        bread = 0;
+        space = 15;
         return money;
+    }
+
+    public void setMoney() {
+        this.money = 0;
     }
 }

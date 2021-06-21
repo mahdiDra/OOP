@@ -13,6 +13,15 @@ public enum Orders {
     TRUCK_LOAD("(?i)^truck\\s*load\\s+(\\w+)\\s*$"),
     TRUCK_UNLOAD("(?i)^truck\\s*unload\\s+(\\w+)\\s*$"),
     TRUCK_GO("(?i)^truck\\s*go\\s*$"),
+    SIGNUP("(?i)^sign\\s*up\\s*$"),
+    LOGIN("(?i)^log\\s*in\\s*$"),
+    USERNAME("(?i)^username\\s+(\\w+)\\s*$"),
+    PASSWORD("(?i)^password\\s+(\\w+)\\s*$"),
+    START("(?i)^start\\s+(\\d+)\\s*$"),
+    LOGOUT("(?i)^log\\s*out\\s*$"),
+    SETTINGS("(?i)^settings\\s*$"),
+    BUILD("(?i)^build\\s+(\\w+)\\s*$"),
+
     ;
 
     Pattern pattern ;
