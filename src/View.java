@@ -30,7 +30,7 @@ public class View {
             if (order != null) {
                 switch (order) {
                     case LOGIN -> {
-                        this.user = login();
+                        login();
                     }
                     case SIGNUP -> signup();
                     default -> System.out.println("invalid command");
@@ -46,21 +46,20 @@ public class View {
             if (order != null) {
                 switch (order) {
                     case START -> {
-                        levelCompleted = false;
                         int level = Integer.parseInt(check(order,input).group(1));
-                        if(user.getPassedLevels() >= level){
+                        if(user.getReachableLevels() >= level){
                             Mission mi;
                             if(( mi = getMission(level)) != null){
                                 this.controller = new Controller(mi);
+                                levelCompleted = false;
                                 run();
                             }else
                             System.out.println("this level is not defined!");
-                        }
+                        }else System.out.println("this level is locked already!");
                     }
                     case LOGOUT -> {
                         return;
                     }
-//                    case SETTINGS -> signup();
                     default -> System.out.println("invalid command");
                 }
             }
@@ -73,7 +72,7 @@ public class View {
             Orders order = check(input);
             if (order != null) {
                 switch (order) {
-                    case BUY -> System.out.println(controller.buyDomestic(check(order, input).group(1)));
+                    case BUY -> System.out.println(controller.buyDomesticOrHelper(check(order, input).group(1)));
                     case PICKUP -> System.out.println(controller.pickup(check(order, input).group(1), check(order, input).group(2)));
                     case WELL -> System.out.println(controller.well());
                     case PLANT -> System.out.println(controller.plant(check(order, input).group(1), check(order, input).group(2)));
@@ -82,16 +81,20 @@ public class View {
                     case TURN -> System.out.println(controller.turn(check(order, input).group(1)));
                     case TRUCK_LOAD -> System.out.println(controller.truckLoad(check(order, input).group(1)));
                     case TRUCK_UNLOAD -> System.out.println(controller.truckUnload(check(order, input).group(1)));
-                    case TRUCK_GO -> controller.truckGO();
-//                    case BUILD -> System.out.println(controller.truckGo());
+                    case TRUCK_GO -> System.out.println(controller.truckGO());
+                    case BUILD -> System.out.println(controller.build(check(order, input).group(1)));
                     default -> System.out.println("invalid command");
                 }
             }
             else System.out.println("invalid command");
         }
+        if (levelCompleted) {
+            System.out.println("You won!");
+            user.passedPlus();
+        }
     }
 
-    private User login(){
+    private void login(){
         while (!input.equalsIgnoreCase("exit")&&!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
             try{
                 String username = check(Orders.USERNAME,input).group(1);
@@ -99,8 +102,9 @@ public class View {
                     while (!input.equalsIgnoreCase("exit")&&!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
                         try{
                             if(userController.checkPassword(check(Orders.PASSWORD,input).group(1),username)){
+                                System.out.println("Congratulations");
+                                this.user = userController.getUser(username);
                                 menu();
-                                return userController.getUser(username);
                             } else {
                                 System.out.println("wrong password!\nEnter again");
                             }
@@ -115,7 +119,6 @@ public class View {
                 System.out.println("Invalid input type!\nset 'username' before your username");
             }
         }
-        return null;
     }
 
     private void signup(){
@@ -126,6 +129,7 @@ public class View {
                     while (!input.equalsIgnoreCase("exit")&&!(input = scanner.nextLine()).equalsIgnoreCase("exit")){
                         try {
                             userController.addUser(username,check(Orders.PASSWORD,input).group(1));
+                            System.out.println("You are successfully added\nLogin to continue");
                             return;
                         }catch (NullPointerException e){
                             System.out.println("Invalid input type!\nset 'password' before your pass");

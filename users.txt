@@ -1,5 +1,5 @@
 [ {
-  "username" : "mahdi",
-  "password" : "dra",
-  "passedLevels" : 0
+  "username" : "a",
+  "password" : "b",
+  "reachableLevels" : 1
 } ]

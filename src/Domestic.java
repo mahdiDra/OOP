@@ -11,29 +11,38 @@ public class Domestic {
     private int x;
     private int y;
 
-    public Domestic(String name) {
+    public Domestic(String name, int buyPrice,String production,int neededTimeForProducing) {
         this.name = name;
         this.remainingAge = 100;
-        switch (name) {
-            case "hen" -> {
-                this.buyPrice = 100;
-                this.production = "egg";
-                this.neededTimeForProducing = 2;
-            }
-            case "turkey" -> {
-                this.buyPrice = 200;
-                this.production = "feather";
-                this.neededTimeForProducing = 3;
-            }
-            case "buffalo" -> {
-                this.buyPrice= 400;
-                this.production = "milk";
-                this.neededTimeForProducing = 5;
-            }
-        }
+        this.buyPrice = buyPrice;
+        this.production = production;
+        this.neededTimeForProducing = neededTimeForProducing;
         this.x = new Random().nextInt(7);
         this.y = new Random().nextInt(7);
     }
+
+    public Production getPro(){
+        return new Production(production);
+    }
+
+
+    public int getNeededTimeForProducing() {
+        return neededTimeForProducing;
+    }
+
+    public void setNeededTimeForProducing(int neededTimeForProducing) {
+        this.neededTimeForProducing = neededTimeForProducing;
+    }
+
+    public void setNeededTimeForProducing() {
+        switch (name){
+            case "hen" -> this.neededTimeForProducing = 2;
+            case "turkey" -> this.neededTimeForProducing = 3;
+            case "buffalo" -> this.neededTimeForProducing = 5;
+        }
+    }
+
+
 
     public int getX() {
         return x;
@@ -60,7 +69,11 @@ public class Domestic {
     }
 
     public void eat(){
-        //TODO
+        this.remainingAge = 100;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void move(){

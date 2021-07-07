@@ -2,17 +2,18 @@ public class Well {
 
     private int water;
     private int timeForPacking;
-    private boolean start;
+    private boolean hasToStart;
 
     public Well() {
         this.water = 5;
         this.timeForPacking = 3;
-        this.start = false;
+        this.hasToStart = false;
     }
 
     public void setTimeForPacking(int timeForPacking) {
         this.timeForPacking = timeForPacking;
     }
+
     public void setTimeForPacking() {
         this.timeForPacking = 3;
     }
@@ -24,19 +25,18 @@ public class Well {
     public int getWater() {
         return water;
     }
-    public void decreaseSpace(){
-        this.water--;
-    }
+
+    public void decreaseSpace(){ this.water--; }
 
     public void setWater() {
         this.water = 5;
     }
 
-    public boolean isStart() {
-        return start;
+    public boolean getHasToStart() {
+        return hasToStart;
     }
 
-    public void setStart(boolean start) {
-        this.start = start;
+    public void setHasToStart(boolean start) {
+        this.hasToStart = start;
     }
 }

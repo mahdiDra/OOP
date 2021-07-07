@@ -43,6 +43,7 @@ public class UserController {
 
     public boolean checkPassword(String pass,String username){
         try {
+            // NO NEEDS TO LOAD USERS AGAIN !
             users = mapper.readValue(usersFile,mapper.getTypeFactory().constructCollectionType(ArrayList.class, User.class));
         } catch (IOException e) {
             e.printStackTrace();

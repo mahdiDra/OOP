@@ -1,12 +1,12 @@
 public class User {
     private String username;
     private String password;
-    private int passedLevels;
+    private int reachableLevels;
 
     public User(String username, String password) {
         this.username = username;
         this.password = password;
-        this.passedLevels = 0;
+        this.reachableLevels = 1;
     }
 
     public User() {
@@ -21,10 +21,10 @@ public class User {
     }
 
     public void passedPlus(){
-        this.passedLevels += 1;
+        this.reachableLevels += 1;
     }
 
-    public int getPassedLevels() {
-        return passedLevels;
+    public int getReachableLevels() {
+        return reachableLevels;
     }
 }

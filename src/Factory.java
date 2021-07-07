@@ -1,3 +1,5 @@
+import java.util.Locale;
+
 public class Factory {
 
     private String name;
@@ -5,48 +7,48 @@ public class Factory {
     private Keys needs;
     private int buildPrice;
     private int timeForProducing;
-    private boolean start;
+    private boolean hasToStart;
 
 
-    public Factory(Keys needs) {
-        this.start = false;
-        switch (needs) {
-            case EGG -> {
+    public Factory(String name) {
+        this.hasToStart = false;
+        switch (name.toLowerCase(Locale.ROOT)) {
+            case "mill" -> {
                 this.needs = Keys.EGG;
                 this.name = "mill";
                 this.production = "flour";
                 this.buildPrice = 150;
                 this.timeForProducing = 4;
             }
-            case MILK -> {
+            case "milk packing" -> {
                 this.needs = Keys.MILK;
                 this.name = "milk packing";
                 this.production = "pocket milk";
                 this.buildPrice = 400;
                 this.timeForProducing = 6;
             }
-            case FEATHER -> {
+            case "cloth packing" -> {
                 this.needs = Keys.FEATHER;
                 this.name = "cloth packing";
                 this.production = "cloth";
                 this.buildPrice = 250;
                 this.timeForProducing = 5;
             }
-            case FLOUR -> {
+            case "bakery" -> {
                 this.needs = Keys.FLOUR;
                 this.name = "bakery";
                 this.production = "bread";
                 this.buildPrice = 250;
                 this.timeForProducing = 5;
             }
-            case CLOTH -> {
+            case "dressmaking" -> {
                 this.needs = Keys.CLOTH;
                 this.name = "dressmaking";
                 this.production = "dress";
                 this.buildPrice = 400;
                 this.timeForProducing = 6;
             }
-            case POCKET_MILK -> {
+            case "ice cream shop" -> {
                 this.needs = Keys.POCKET_MILK;
                 this.name = "ice cream shop";
                 this.production = "ice cream";
@@ -72,12 +74,12 @@ public class Factory {
         return new Production(this.production);
     }
 
-    public boolean isStart() {
-        return start;
+    public boolean getHasToStart() {
+        return hasToStart;
     }
 
-    public void setStart(boolean start) {
-        this.start = start;
+    public void setHasToStart(boolean start) {
+        this.hasToStart = start;
     }
 
     public int getTimeForProducing() {
@@ -87,6 +89,7 @@ public class Factory {
     public void setTimeForProducing(int timeForProducing) {
         this.timeForProducing = timeForProducing;
     }
+
     public void setTimeForProducing() {
         switch (this.name) {
             case "mill" -> this.timeForProducing = 4;
@@ -94,5 +97,9 @@ public class Factory {
             case "cloth packing", "bakery" -> this.timeForProducing = 5;
             case "ice cream shop" -> this.timeForProducing = 7;
         }
+    }
+
+    public int getBuildPrice() {
+        return buildPrice;
     }
 }
